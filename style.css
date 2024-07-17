@@ -471,7 +471,6 @@ html, body {
         flex-direction: row;
         padding: 2px;
         font-size: 1rem;
-        overflow: scroll;
     }
     .current-weather-hours .hour-weather {
         max-width: 20%;
