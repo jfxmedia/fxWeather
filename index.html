@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather API Project</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin="">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+
+          <div class="app-title">
+            <img src="./images/fxweather_logo.svg" alt="">
+            <h1 class="app-title">Fx Weather</h1>
+          </div>
+          <div class="search-container">
+            <div class="favorite-heart">
+              <div class="favorite-icon">
+                <i class="fa-solid fa-heart "></i>
+              </div>
+            </div>
+            <div id="search-box">
+              <input type="text" id="location" name="location" placeholder="Start typing city or zip">
+            </div>
+          </div>
+
+          <div class="suggestions">
+            <div class="suggestion-cities"></div>
+          </div>
+          <div class="favorites">
+            <div class="favorite-cities" style="display: none;"></div>
+          </div>
+
+          <div class="current-container" style="display:none;">
+            <div class="current-weather">
+              <p class="current-title">Current weather for</p>
+              <h2 class="city-name"></h2>
+              <div class="current-description"></div>
+              <div class="current">
+                <img class="current-icon">
+                <div class="current-stats">
+                  <div class="current-temp"></div>
+                  <div class="current-rain"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="current-weather-hourly">
+              <h2 class="current-weather-hourly-title">Hourly</h2>
+              <div class="current-weather-hours"></div>
+            </div>
+          </div>
+          
+          <div class="week" style="display: none;">
+          </div>
+
+
+          <div class="map-container" style="display:none;">
+            <div id="map"></div>
+          </div>
+          <div class="attribution">
+            <a class="developed-by" href="https://www.jfxmedia.com">Designed & Developed by <span>JFXMedia</span></a>
+            <a href="https://open-meteo.com/">Weather data by <span>Open-Meteo.com</span></a>
+            <p>All rights reserved &copy; 2024</p>
+          </div>        
+        </div>
+    </div>
+
+  <script type="module" src="./index.js" crossorigin="anonymous"></script>
+</body>
+</html>
