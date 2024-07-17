@@ -4,15 +4,18 @@
     padding: 0;
 }
 
-body {
+html, body {
+    height: 100%;
     font-family: "Familjen Grotesk", sans-serif;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
+    background: linear-gradient(48deg, rgba(221, 84, 233, 0.5) 12%, rgb(172, 148, 245) 50%, rgba(82, 218, 246, 1) 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background: linear-gradient(48deg, rgba(221, 84, 233, 0.5) 12%, rgb(172, 148, 245) 50%, rgba(82,218,246,1) 100%);
+    background-size: cover;
 }
+
 
 @keyframes scaleIn {
     from {
