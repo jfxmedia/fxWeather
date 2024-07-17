@@ -47,7 +47,7 @@ Ensure you have the following installed:
 - `images/`: Directory for images.
 
 ## Scripts
-- `index.js`: Contains JavaScript functions for fetching weather data, displaying weather information, and handling alarms.
+- `index.js`: Contains JavaScript functions for fetching weather data, displaying weather information, and managing localStorage.
 
 ## Contributing
 
