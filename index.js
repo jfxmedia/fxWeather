@@ -28,6 +28,29 @@ const fetchSuggestions = async () => {
   }
 };
 
+// Fetch weather data based on lat, long and tz variables
+const fetchWeather = async (lat, long, tz) => {
+  const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&timezone=${tz}&current=precipitation&current_weather=true&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&daily=temperature_2m_max,weather_code,sunshine_duration,precipitation_sum,precipitation_probability_max&hourly=temperature_2m,relative_humidity_2m,is_day,precipitation,precipitation_probability,rain,showers,weather_code,cloud_cover,wind_speed_10m`;
+
+  try {
+    const response = await fetch(weatherURL);
+    const data = await response.json();
+    console.log(data); // Log the full API response
+    displayWeather(data);
+  } catch (err) {
+    console.error('Error:', err);
+  }
+};
+// Function to get City/state name from Nominatim
+const getCityName = async (lat, long) => {
+  const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${long}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  const city = data.address.city || data.address.town || data.address.village || 'Unknown';
+  const state = data.address.state || 'Unknown';
+  return { city, state };
+};
+
 const clearSuggestions = () => {
   suggestionCities.innerHTML = ''; // Clear previous suggestions
   suggestionContainer.style.display = "none"; // Hide suggestions container
@@ -95,8 +118,6 @@ const addFavoriteCity = (city, state, latitude, longitude, timezone) => {
   saveToLocalStorage({ city: city, state: state, latitude: latitude, longitude: longitude, timezone: timezone });
 };
 
-
-
 const removeFavoriteCity = (favoriteCity) => {
   const cityText = favoriteCity.textContent.replace('×', '').trim();
   let favoriteCities = JSON.parse(localStorage.getItem('favoriteCities')) || [];
@@ -117,19 +138,32 @@ const selectCity = (event) => {
   clearSuggestions();
 };
 
-// Fetch weather data
-const fetchWeather = async (lat, long, tz) => {
-  const weatherURL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&timezone=${tz}&current=precipitation&current_weather=true&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&daily=temperature_2m_max,weather_code,sunshine_duration,precipitation_sum,precipitation_probability_max&hourly=temperature_2m,relative_humidity_2m,is_day,precipitation,precipitation_probability,rain,showers,weather_code,cloud_cover,wind_speed_10m`;
-
-  try {
-    const response = await fetch(weatherURL);
-    const data = await response.json();
-    console.log(data); // Log the full API response
-    displayWeather(data);
-  } catch (err) {
-    console.error('Error:', err);
+// // Get user location in browser
+document.querySelector('.user-location').addEventListener('click', () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const lat = position.coords.latitude;
+        const long = position.coords.longitude;
+        const tz = 'auto';
+        try {
+          const { city, state } = await getCityName(lat, long);
+          const selectedCity = `${city}, ${state}`;
+          document.querySelector('.city-name').innerHTML = selectedCity;
+          fetchWeather(lat, long, tz);
+          mapInit(lat, long, selectedCity);
+        } catch (error) {
+          console.error('Error getting city name:', error);
+        }
+      },
+      (error) => {
+        console.error('Error getting location:', error);
+      }
+    );
+  } else {
+    console.error('Geolocation is not supported by this browser.');
   }
-};
+});
 
 const displayWeather = (data) => {
   const icons = {
