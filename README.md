@@ -4,6 +4,8 @@ fxWeather is a web application I built using HTML, CSS, and JavaScript. My goal 
 It provides weather forecasts locally and abroad with digested data from the free-use open-meteo.com API.
 I use two APIs in this project, one based on latitude and longitude to find a location, and another to get the object based on these variables. This project will be an ongoing project as I am always coming up with new features I want to add, with the goal of publishing it on mobile app stores as a free weather app alternative!
 
+A featured I implented in this app was the use of localStorage to store favorite cities for a given user. I plan to further develop the app using LS for other things like alarms based on weather conditions, comparison feature for cities similar in theory to weatherspark.com.
+
 ## Features
 - **Current Weather:** Displays current weather conditions.
 - **Weather Forecast:** Provides a 5-day weather forecast.
