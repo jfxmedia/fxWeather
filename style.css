@@ -423,3 +423,114 @@ body {
 
 }
 
+/* MOBILE Max width of 700px*/
+@media screen and (max-width: 700px) {
+    .container {
+        padding: 0 10px;
+        width: 100%;
+        height: auto;
+        margin: auto;
+    }
+    .current {
+        padding: 0;
+    }
+    .current-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .current-weather {
+        width: 100%;
+        padding: 0 10px;
+    }
+    .current-stats .current-temp{
+        font-size: 3rem;
+    }
+    .current-stats .current-rain{
+        font-size: 3rem;
+    }
+    .current-weather-hourly {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;
+        margin: 0 auto;
+
+        ::before {
+            display: none;
+        }
+    }
+    .current-weather-hourly-title {
+        display: none;
+    }
+    .current-weather-hours {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        padding: 2px;
+        font-size: 1rem;
+        overflow: scroll;
+    }
+    .current-weather-hours .hour-weather {
+        max-width: 20%;
+        display: flex;
+        flex-direction: column;
+        padding: 2px;
+    }
+    .current-weather-hours .hour-weather p {
+        text-align: center;
+        margin: 0 auto;
+    }
+    .current-weather-hours .hour-weather .hourly-time {
+        padding: 0 2px;
+        display: flex;
+        text-align: left;
+    }
+    .current-weather-hours .hour-weather .hourly-temp {
+        padding: 0 2px;
+        display: flex;
+        text-align: left;
+    }
+    .current-weather-hours .hour-weather .hourly-rain {
+        padding: 0 2px;
+        display: flex;
+        text-align: left;
+    }
+    .current img {
+        display: block;
+        padding: 20px 0;
+        width: 150px;
+        height: auto;
+        background-color: transparent;
+    }
+
+    /*  Mobile Week styles */
+
+    .week {
+        padding: 8px;
+    }
+    .week-weather {
+        margin: 6px 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
+    .week-weather .day {
+        font-size: 1rem;
+        color: white;
+        background-color: transparent;
+        margin: auto;
+        text-align: center;
+    }
+    .week-weather p {
+        font-size: 1rem;
+    }
+    .week-weather .day i {
+        padding: 2px;
+    }
+    .fa-droplet {
+        font-size: .7rem;
+    }
+    
+}

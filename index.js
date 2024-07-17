@@ -182,7 +182,7 @@ const displayWeather = (data) => {
 
       const tempElement = document.createElement('div');
       tempElement.classList.add('day');
-      tempElement.innerHTML = `${tempMax}<i>&deg;</i><br>${precipProb}<i style="padding:0 10px" class="fa-solid fa-droplet"></i>`;
+      tempElement.innerHTML = `${tempMax}<i>&deg;</i><br>${precipProb}<i class="fa-solid fa-droplet"></i>`;
 
       dayElement.appendChild(iconElement);
       dayElement.appendChild(tempElement);
