@@ -250,7 +250,7 @@ const displayWeather = (data) => {
         hourElement.classList.add('hour-weather');
 
         const currentRain = document.querySelector('.current-rain');
-        const currentRainChance = data.hourly.precipitation_probability && data.hourly.precipitation_probability[0] !== undefined ? data.hourly.precipitation_probability[0] : 0;
+        const currentRainChance = data.hourly.precipitation_probability && data.hourly.precipitation_probability[i] !== undefined ? data.hourly.precipitation_probability[i] : 0;
         currentRain.innerHTML = `${currentRainChance}<i style="padding:0 10px" class="fa-solid fa-droplet">`;
   
 
